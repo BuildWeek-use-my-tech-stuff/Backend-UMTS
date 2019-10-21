@@ -2,7 +2,7 @@
 
 # **Auth**
 
-### BaseURL: 
+### BaseURL: https://use-my-tech-stuff-bw.herokuapp.com/api
 
 ## **Register User**
 ```
