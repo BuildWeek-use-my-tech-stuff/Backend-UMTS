@@ -7,14 +7,26 @@ const secrets = require('../config/secrets.js');
 
 // for endpoints beginning with /api/auth
 router.post('/register', (req, res) => {
-  let user = req.body;
-  const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
-  user.password = hash;
+  let { username, password, email, phone } = req.body;
+  const hash = bcrypt.hashSync(password, 10); // 2 ^ n
+  password = hash;
 
-  Users.add(user)
-    .then(saved => {
-      // const token = generateToken(user)
-      res.status(201).json(saved);
+  Users.add({ username, password, phone, email })
+    .then(user => {
+      if (username && password) {
+        // produce token
+        const token = generateToken(user);
+
+        // add token to response
+        res.status(200).json({
+          message: `Welcome ${username}!`,
+          email,
+          phone,
+          token,
+        });
+      } else {
+        res.status(401).json({ message: 'Invalid Credentials' });
+      }
     })
     .catch(error => {
       res.status(500).json({ message: 'cannot add the user', error });
