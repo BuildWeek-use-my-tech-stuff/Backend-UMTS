@@ -57,7 +57,7 @@ router.get('/', restricted, (req, res) => {
     })
 })
 
-router.get('/:id/user-items/:id', restricted, (req, res) => {
+router.get(':id/user-items/:id', restricted, (req, res) => {
   const id = req.params.id;
   users.getItemById(id)
   .then(item => {
@@ -82,7 +82,7 @@ router.get('/:id/user-items/:id', restricted, (req, res) => {
     });
   });
 
-  router.put('/:id/user-items/:id', restricted, (req, res) => {
+  router.put('/user-items/:id', restricted, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
     users.getItemById(id)
@@ -92,6 +92,22 @@ router.get('/:id/user-items/:id', restricted, (req, res) => {
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new item' });
+    });
+  });
+
+  router.delete('user-items/:id', (req, res) => {
+    const { id } = req.params;
+  
+    users.deleteItem(id)
+    .then(deleted => {
+      if (deleted) {
+        res.json({ removed: deleted });
+      } else {
+        res.status(404).json({ message: 'Could not find item with given id' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Failed to delete item' });
     });
   });
 

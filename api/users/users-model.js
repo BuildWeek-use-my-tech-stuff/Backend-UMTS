@@ -14,8 +14,8 @@ module.exports = {
   getItems,
   getItemById,
   addItem,
-  // updateItems,
-  // deleteItems
+  updateItems,
+  deleteItems
 };
 
 // users
@@ -52,24 +52,13 @@ function remove(id) {
     .del();
 }
 
+// **************************** 
 // user_items
+
 function getItems(id){
   return db('user_items')
-  // .join('users', 'user.id', '=', 'u.user_id')
-  // .select('user_items.*')
   .where({ user_id: id })
 }
-
-// function addItem(item, id){
-//   return db('user_items')
-//   .join('users', 'users.id', '=', 'user_items.user_id')
-//   .where({ user_id: id })
-//   .insert(item, 'id')
-//   .then(([ id ]) => {
-//       return findById(id)
-//   })
-//}
-// jfnb
 
 function addItem(item) {
   return db('user_items').insert(item, 'id')
@@ -79,23 +68,21 @@ function addItem(item) {
 function getItemById(id) {
   return db('user_items')
     .select('id', 'user_items.*')
-    .where({ id })
+    .where({ user_id: id })
     .first();
 }
 
-// function getItemById(item, id) {
-//   return db('user_items')
-//     .join('users', 'users.id', '=', 'user_items.user_id')
-//     .updateItems(item)
-//     .select('user_items.*')
-//     .where({ 'user_items.id':id });
-// }
+function updateItems(item, id){
+  return db('user_items')
+  .where('id', Number(id))
+  .update(item)
+}
 
-// function updateItems(item, id){
-//   return db('user_items')
-//   .where(user_items.id)
-//   .update(item)
-// }
+function deleteItems(id){
+  return db('user_items')
+  .where('id', Number(id))
+  .del();
+}
 
   // getItems,
   // getItemById,
