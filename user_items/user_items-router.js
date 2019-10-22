@@ -32,7 +32,7 @@ router.get('/:id', restricted, (req, res) => {
   });
 });
 
-router.post('/', restricted, (req, res) => {
+router.post('/', (req, res) => {
   const id = req.params;
   const itemData = req.body;
 
