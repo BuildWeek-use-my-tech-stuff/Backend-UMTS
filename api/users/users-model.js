@@ -68,7 +68,7 @@ function getItems(id){
 //   .then(([ id ]) => {
 //       return findById(id)
 //   })
-}
+//}
 
 function addItem(item) {
   return db('user_items').insert(item, 'id')
