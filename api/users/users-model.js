@@ -83,15 +83,17 @@ function getItemById(id) {
     .first();
 }
 
-function updateItems(item, id){
+function getItemById(item, id) {
   return db('user_items')
-  .where('id', Number(id))
-  .update(item)
+    .join('users', 'users.id', '=', 'user_items.user_id')
+    .updateItems(item)
+    .select('user_items.*')
+    .where('user_items.id', id);
 }
 
 // function updateItems(item, id){
 //   return db('user_items')
-//   .where(id)
+//   .where(user_items.id)
 //   .update(item)
 // }
 
