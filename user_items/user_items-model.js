@@ -3,12 +3,12 @@ const knexConfig = require('../knexfile.js');
 const db = knex(knexConfig.development);
 
 module.exports = {
-  find,
+  findItem,
   findBy,
-  findById,
-  add,
-  update,
-  remove,
+  findItemById,
+  addItem,
+  updateItem,
+  removeItem,
 //   findPostComments,
 //   findCommentById,
 //   insertComment,
@@ -31,19 +31,23 @@ function findBy(filter) {
       .first();
   }
 
-async function add(item, id) {
-    const [id] = await db('user_items').insert(item, 'id');
-  
-    return findById(id);
+function addItem(item, id) {
+    return db('user_items')
+    .join('users', 'users.id', '=', 'user_items.user_id')
+    .insert(item, 'id')
+    .where({ user_id: id })
+    .then(([id]) => {
+      return getItemById(id)
+    })
   }
 
-function update(id, item) {
+function updateItem(id, item) {
   return db('user_item')
     .where('id', Number(id))
     .update(item);
 }
 
-function remove(id) {
+function removeItem(id) {
   return db('user_item')
     .where('id', Number(id))
     .del();

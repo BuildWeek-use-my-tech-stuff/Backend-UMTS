@@ -5,7 +5,7 @@ const user_items = require('./user_items-model');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  user_items.find()
+  user_items.findItem()
   .then(item => {
     res.json(item);
   })
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id } = req.params;
 
-  user_items.findById(id)
+  user_items.findItemById(id)
   .then(item => {
     if (item) {
       res.json(item);
@@ -34,8 +34,8 @@ router.post('/:id/user-items', (req, res) => {
   const id = req.params;
   const itemData = req.body;
 
-  user_items.findById(id)
-  user_items.add(itemData, 'id')
+  user_items.findItem(id)
+  user_items.addItem(itemData, 'id')
   .then(item => {
     res.status(201).json(item);
   })
