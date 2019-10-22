@@ -62,7 +62,7 @@ function getItems(id){
 
 function addItem(item, id){
   return db('user_items')
-  .join('users', 'users.id', '=', 'user_items.user_id')
+  // .join('users', 'users.id', '=', 'user_items.user_id')
   .where({ user_id: id })
   .insert(item, 'id')
   .then(([ id ]) => {
