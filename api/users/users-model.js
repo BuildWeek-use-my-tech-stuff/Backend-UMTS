@@ -78,18 +78,18 @@ function addItem(item) {
 
 function getItemById(id) {
   return db('user_items')
-    .select('id', 'item_name')
+    .select('id', 'user_items.*')
     .where({ id })
     .first();
 }
 
-function getItemById(item, id) {
-  return db('user_items')
-    // .join('users', 'users.id', '=', 'user_items.user_id')
-    .updateItems(item)
-    // .select('user_items.*')
-    .where({ 'user_items.id':id });
-}
+// function getItemById(item, id) {
+//   return db('user_items')
+//     .join('users', 'users.id', '=', 'user_items.user_id')
+//     .updateItems(item)
+//     .select('user_items.*')
+//     .where({ 'user_items.id':id });
+// }
 
 // function updateItems(item, id){
 //   return db('user_items')
