@@ -3,13 +3,14 @@ exports.up = function(knex) {
     return knex.schema.table('user_items', tbl => {
         tbl.integer('user_id')
         .references('id')
-        .inTable('user_items')
+        .inTable('users')
         .unsigned()
+        .unique('user_id')
     })
 };
 
 exports.down = function(knex) {
     return knex.schema.table('users_items', tbl => {
-        table.dropForeign('user_id')
+        tbl.dropForeign('user_id')
     })
 };

@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
 
-const secrets = process.env.JWT_SECRET || require('../config/secrets.js');
+const secrets = require('../../config/secrets');
 
 module.exports = (req, res, next) => {
   const token = req.headers.authorization;
 
   if (token) {
     // check that the token is valid
-    jwt.verify(token, process.env.JWT_SECRET || secrets.jwtSecret, (err, decodedToken) => {
+    jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
       if (err) {
         // foul play
         res.status(401).json({ message: 'Bad panda!' });

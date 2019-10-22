@@ -32,8 +32,8 @@ router.get('/:id', restricted, (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
-  const id = req.params;
+router.post('/', restricted, (req, res) => {
+  const id = req.params.id;
   const itemData = req.body;
 
   users.findBy(id)
