@@ -14,7 +14,7 @@ module.exports = {
   getItems,
   getItemById,
   addItem,
-  updateItems,
+  // updateItems,
   // deleteItems
 };
 
