@@ -71,7 +71,7 @@ router.get('/', restricted, (req, res) => {
   router.put('/:id/user-items/:id', restricted, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
-    users.findById(id)
+    users.getItemById(id)
     .then(item => {
       users.updateItems(changes, id)
       res.status(200).json(item);

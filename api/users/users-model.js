@@ -12,7 +12,7 @@ module.exports = {
   
   // user_items
   getItems,
-  // getItemById,
+  getItemById,
   addItem,
   updateItems,
   // deleteItems
@@ -76,11 +76,24 @@ function addItem(item) {
     .then(ids => ({ id: ids[0] }));
 }
 
+function getItemById(id) {
+  return db('user_items')
+    .select('id', 'item_name')
+    .where({ id })
+    .first();
+}
+
 function updateItems(item, id){
   return db('user_items')
-  .where({ id })
+  .where('id', Number(id))
   .update(item)
 }
+
+// function updateItems(item, id){
+//   return db('user_items')
+//   .where(id)
+//   .update(item)
+// }
 
   // getItems,
   // getItemById,
