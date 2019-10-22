@@ -77,9 +77,7 @@ function addItem(item) {
 }
 
 function updateItems(item, id){
-  const { id }= req.params.id;
-  const changes = req.body;
-  return db('user_items', changes)
+  return db('user_items')
   .where({ user_id: id })
   .update(item)
 }
