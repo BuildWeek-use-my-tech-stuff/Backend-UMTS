@@ -55,8 +55,8 @@ function remove(id) {
 // user_items
 function getItems(id){
   return db('user_items')
-  .join('users', 'user.id', '=', 'u.user_id')
-  .select('user_items.*')
+  // .join('users', 'user.id', '=', 'u.user_id')
+  // .select('user_items.*')
   .where({ user_id: id })
 }
 
