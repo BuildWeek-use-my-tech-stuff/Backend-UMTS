@@ -57,7 +57,7 @@ POST /auth/login
 | available   	| boolean 	| if the item is available * required                     	|
 | user_id     	| integer 	| the id of the user *required                            	|
 
-## GET user items
+### GET user items
 
 ```
 GET /:id/user-items
@@ -78,7 +78,7 @@ GET /:id/user-items
 ```
 ---
 
-## POST create user item
+### POST create user item
 
 ```
 POST /:id/user_items
