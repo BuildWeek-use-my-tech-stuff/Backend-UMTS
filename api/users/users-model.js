@@ -67,7 +67,7 @@ function addItem(item) {
 
 function getItemById(id) {
   return db('user_items')
-    .select('id', 'user_items.*')
+    // .select('id', 'user_items.*')
     .where('id', Number(id))
     .first();
 }

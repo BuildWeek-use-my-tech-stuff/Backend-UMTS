@@ -57,7 +57,7 @@ router.get('/', restricted, (req, res) => {
     })
 })
 
-router.get(':id/user-items/:id', restricted, (req, res) => {
+router.get('/user-items/:id', restricted, (req, res) => {
   const id = req.params.id;
   users.getItemById(id)
   .then(item => {
@@ -85,9 +85,10 @@ router.get(':id/user-items/:id', restricted, (req, res) => {
   router.put('/user-items/:id', restricted, (req, res) => {
     const id = req.params.id;
     const changes = req.body;
-    users.getItemById(id)
+    // users.getItemById(id)
+    users.updateItems(changes, id)
     .then(item => {
-      users.updateItems(changes, id)
+      // users.updateItems(changes, id)
       res.status(200).json(item);
     })
     .catch (err => {
@@ -95,7 +96,7 @@ router.get(':id/user-items/:id', restricted, (req, res) => {
     });
   });
 
-  router.delete('user-items/:id', (req, res) => {
+  router.delete('/user-items/:id', (req, res) => {
     const id = req.params.id;
   
     users.deleteItems(id)
