@@ -6,15 +6,15 @@ module.exports = {
   find,
   findBy,
   findById,
-  add,
+  // add,
   update,
   remove,
   // user_items
   getItems,
-  getItemById,
+  // getItemById,
   addItem,
-  updateItems,
-  deleteItems
+  // updateItems,
+  // deleteItems
 };
 
 // users
