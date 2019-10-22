@@ -60,20 +60,20 @@ function getItems(id){
   .where({ user_id: id })
 }
 
-function addItem(item, id){
-  return db('user_items')
-  // .join('users', 'users.id', '=', 'user_items.user_id')
-  .where({ user_id: id })
-  .insert(item, 'id')
-  .then(([ id ]) => {
-      return findById(id)
-  })
+// function addItem(item, id){
+//   return db('user_items')
+//   .join('users', 'users.id', '=', 'user_items.user_id')
+//   .where({ user_id: id })
+//   .insert(item, 'id')
+//   .then(([ id ]) => {
+//       return findById(id)
+//   })
 }
 
-// function addItem(item) {
-//   return db('user_items').insert(item, 'id')
-//     .then(ids => ({ id: ids[0] }));
-// }
+function addItem(item) {
+  return db('user_items').insert(item, 'id')
+    .then(ids => ({ id: ids[0] }));
+}
 
   // getItems,
   // getItemById,
