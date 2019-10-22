@@ -50,10 +50,10 @@ POST /auth/login
 | name        	| type    	| description                                             	|
 |-------------	|---------	|---------------------------------------------------------	|
 | id          	| integer 	| user_items id                                       	|
-| photo       	| string  	| user_item photo (cannot be longer than 1000 characters) 	|
-| item_name   	| string  	| user_item name *required                                	|
-| description 	| text    	| user_item description * required                        	|
-| price       	| decimal 	| user_item price *required (ex: 20.22)                   	|
+| photo       	| string  	| photo of item (cannot be longer than 1000 characters) 	|
+| item_name   	| string  	| name of item *required                                	|
+| description 	| text    	| description of item * required                        	|
+| price       	| decimal 	| price of item *required (ex: 20.22)                   	|
 | available   	| boolean 	| if the item is available * required                     	|
 | user_id     	| integer 	| the id of the user *required                            	|
 
