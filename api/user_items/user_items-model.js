@@ -16,8 +16,8 @@ module.exports = {
 function findItem(id) {
     return db('user_items')
     .join('users', 'users.id', '=', 'user_items.user_id')
-    // .where({ user_id: id })
-    // .select('id', 'username', 'user_id', 'photo', 'item_name', 'description', 'price', 'available');
+    .where({ user_id: id })
+    .select('id', 'username', 'user_id', 'photo', 'item_name', 'description', 'price', 'available');
   }
 
 function findBy(filter) {
