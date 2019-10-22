@@ -2,17 +2,22 @@
 const db = require('../../database/dbConfig');
 
 module.exports = {
+  // users
   find,
   findBy,
   findById,
   add,
   update,
   remove,
-//   findPostComments,
-//   findCommentById,
-//   insertComment,
+  // user_items
+  getItems,
+  getItemById,
+  addItem,
+  updateItems,
+  deleteItems
 };
 
+// users
 function find() {
     return db('users').select('id', 'username', 'email', 'phone');
   }
@@ -28,11 +33,11 @@ function findBy(filter) {
       .first();
   }
 
-async function add(user) {
-    const [id] = await db('users').insert(user, 'id');
+// async function add(user) {
+//     const [id] = await db('users').insert(user, 'id');
   
-    return findById(id);
-  }
+//     return findById(id);
+//   }
 
 function update(id, item) {
   return db('users')
@@ -45,6 +50,35 @@ function remove(id) {
     .where('id', Number(id))
     .del();
 }
+
+// user_items
+function getItems(id){
+  return db('user_items as u')
+  .join('users', 'user.id', '=', 'u.user_id')
+  .select('user_items.*')
+  .where({ user_id: id })
+}
+
+function addItem(item, id){
+  return db('user_items')
+  .join('users', 'users.id', '=', 'user_items.user_id')
+  .where({ user_id: id })
+  .insert(item, 'id')
+  .then(([ id ]) => {
+      return getProjectById(id)
+  })
+}
+
+// function addItem(item) {
+//   return db('user_items').insert(item, 'id')
+//     .then(ids => ({ id: ids[0] }));
+// }
+
+  // getItems,
+  // getItemById,
+  // addItem,
+  // updateItems,
+  // deleteItems
 
 // function findPostComments(postId) {
 //   return db('comments')

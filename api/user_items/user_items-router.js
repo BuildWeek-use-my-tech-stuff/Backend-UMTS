@@ -1,13 +1,13 @@
 const express = require('express');
 
-const user_items = require('./user_items-model');
+// const user_items = require('./user_items-model');
 const users = require('../users/users-model');
 const restricted = require('../auth/restricted-middleware');
 
 const router = express.Router();
 
 router.get('/', restricted, (req, res) => {
-  user_items.findItem()
+  users.getItem()
   .then(item => {
     res.json(item);
   })
@@ -33,11 +33,8 @@ router.get('/:id', restricted, (req, res) => {
 });
 
 router.post('/', restricted, (req, res) => {
-  const id = req.params.id;
-  const itemData = req.body;
-
-  users.findBy(id)
-  user_items.addItem(itemData, 'id')
+  // const id = req.params.id;
+  user_items.addItem(req.body, 'id')
   .then(item => {
     res.status(201).json(item);
   })

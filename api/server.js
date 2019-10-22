@@ -14,7 +14,7 @@ server.use(cors());
 
 server.use('/api/auth', authRouter);
 server.use('/api/users', usersRouter);
-server.use('/api/:id/user-items', user_itemsRouter)
+// server.use('/api/:id/user-items', user_itemsRouter)
 
 server.get('/', (req, res) => {
     res.send("It's alive!");
