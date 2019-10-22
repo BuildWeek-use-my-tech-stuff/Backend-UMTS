@@ -69,6 +69,7 @@ function getItems(id){
 //       return findById(id)
 //   })
 //}
+// jfnb
 
 function addItem(item) {
   return db('user_items').insert(item, 'id')
