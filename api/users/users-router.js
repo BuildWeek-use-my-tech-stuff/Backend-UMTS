@@ -59,7 +59,7 @@ router.get('/', restricted, (req, res) => {
 
   router.post('/:id/user-items', restricted, (req, res) => {
     // const id = req.params.id;
-    users.addItem(req.body, 'id')
+    users.addItem(req.body)
     .then(item => {
       res.status(201).json(item);
     })
