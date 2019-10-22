@@ -6,14 +6,9 @@ const restricted = require('../auth/restricted-middleware');
 const router = express.Router();
 
 router.get('/', restricted, (req, res) => {
-    users.find(item)
+    users.find()
     .then(item => {
-      res.json({
-        id: item.id,
-        username: item.username,
-        email: item.email,
-        phone: item.phone
-      });
+      res.json(item);
     })
     .catch(err => {
       res.status(500).json({ message: 'Failed to get users' });
