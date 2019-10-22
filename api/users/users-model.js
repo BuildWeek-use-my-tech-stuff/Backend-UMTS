@@ -78,7 +78,7 @@ function addItem(item) {
 
 function updateItems(item, id){
   return db('user_items')
-  .where({ user_id: id })
+  .where(user_items.id)
   .update(item)
 }
 

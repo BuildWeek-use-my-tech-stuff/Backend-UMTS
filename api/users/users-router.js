@@ -74,7 +74,7 @@ router.get('/', restricted, (req, res) => {
     users.findById(id)
     .then(item => {
       users.updateItems(changes, id)
-      res.status(201).json(item);
+      res.status(200).json(item);
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new item' });
