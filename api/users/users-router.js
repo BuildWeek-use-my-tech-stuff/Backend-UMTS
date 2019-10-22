@@ -15,7 +15,7 @@ router.get('/', restricted, (req, res) => {
     });
   });
 
-  router.get('/:id', (req, res) => {
+  router.get('/:id', restricted, (req, res) => {
     const id = req.params.id;
     posts.findById(id)
     .then(user => {
@@ -37,7 +37,7 @@ router.get('/', restricted, (req, res) => {
 
   // user_items
 
-  router.get('/:id/user-items', (req, res) => {
+  router.get('/:id/user-items', restricted, (req, res) => {
     // const id = req.params.id;
     users.getItems(req.params.id)
     .then(items => {

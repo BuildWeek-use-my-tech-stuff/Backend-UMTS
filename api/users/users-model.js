@@ -55,7 +55,7 @@ function remove(id) {
 function getItems(id){
   return db('user_items as u')
   .join('users', 'user.id', '=', 'u.user_id')
-  .select('user_items.*')
+  // .select('user_items.*')
   .where({ user_id: id })
 }
 
@@ -65,7 +65,7 @@ function addItem(item, id){
   .where({ user_id: id })
   .insert(item, 'id')
   .then(([ id ]) => {
-      return getProjectById(id)
+      return findById(id)
   })
 }
 
