@@ -14,7 +14,7 @@ module.exports = {
   getItems,
   // getItemById,
   addItem,
-  // updateItems,
+  updateItems,
   // deleteItems
 };
 
@@ -74,6 +74,14 @@ function getItems(id){
 function addItem(item) {
   return db('user_items').insert(item, 'id')
     .then(ids => ({ id: ids[0] }));
+}
+
+function updateItems(item, id){
+  const { id }= req.params.id;
+  const changes = req.body;
+  return db('user_items')
+  .where({ user_id: id })
+  .update(item)
 }
 
   // getItems,
