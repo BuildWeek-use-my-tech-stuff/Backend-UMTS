@@ -17,7 +17,7 @@ router.get('/', restricted, (req, res) => {
 
   router.get('/:id', restricted, (req, res) => {
     const id = req.params.id;
-    posts.findById(id)
+    users.findById(id)
     .then(user => {
         if(user){
             res.status(200).json(user)
@@ -55,6 +55,20 @@ router.get('/', restricted, (req, res) => {
             errorMessage: "The items information could NOT be retreived"
         })
     })
+})
+
+router.get('/:id/user-items/:id', restricted, (req, res) => {
+  const id = req.params.id;
+  users.getItemById(id)
+  .then(item => {
+    res.status(200).json(item)
+  })
+  .catch(error => {
+      console.log(error)
+      res.status(500).json({
+          errorMessage: "The item information can NOT be retreived."
+      })
+  })
 })
 
   router.post('/:id/user-items', restricted, (req, res) => {
