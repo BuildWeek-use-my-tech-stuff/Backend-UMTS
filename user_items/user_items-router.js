@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.post('/:id/user-items', (req, res) => {
+router.post('/user-items', (req, res) => {
   const id = req.params;
   const itemData = req.body;
 
