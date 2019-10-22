@@ -68,7 +68,7 @@ router.get('/', restricted, (req, res) => {
     });
   });
 
-  router.put('/:id/user-items', restricted, (req, res) => {
+  router.put('/:id/user-items/:id', restricted, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
     users.findById(id)
