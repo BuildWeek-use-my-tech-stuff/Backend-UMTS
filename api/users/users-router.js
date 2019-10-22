@@ -83,7 +83,7 @@ router.get(':id/user-items/:id', restricted, (req, res) => {
   });
 
   router.put('/user-items/:id', restricted, (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     const changes = req.body;
     users.getItemById(id)
     .then(item => {
@@ -91,20 +91,16 @@ router.get(':id/user-items/:id', restricted, (req, res) => {
       res.status(200).json(item);
     })
     .catch (err => {
-      res.status(500).json({ message: 'Failed to create new item' });
+      res.status(500).json({ message: 'Failed to update new item' });
     });
   });
 
   router.delete('user-items/:id', (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
   
-    users.deleteItem(id)
+    users.deleteItems(id)
     .then(deleted => {
-      if (deleted) {
         res.json({ removed: deleted });
-      } else {
-        res.status(404).json({ message: 'Could not find item with given id' });
-      }
     })
     .catch(err => {
       res.status(500).json({ message: 'Failed to delete item' });

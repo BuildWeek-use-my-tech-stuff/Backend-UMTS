@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const authRouter = require('../api/auth/auth-router');
 const usersRouter = require('../api/users/users-router');
-const user_itemsRouter = require('../api/user_items/user_items-router');
+// const user_itemsRouter = require('../api/user_items/user_items-router');
 
 const server = express();
 
