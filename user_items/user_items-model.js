@@ -14,7 +14,7 @@ module.exports = {
 //   insertComment,
 };
 
-function find() {
+function findItem() {
     return db('user_items')
     .join('users', 'users.id', '=', 'user_items.user_id')
     .select('id', 'username', 'user_id', 'photo', 'item_name', 'description', 'price', 'available');
@@ -24,7 +24,7 @@ function findBy(filter) {
     return db('user_items').where(filter);
   }
 
-  function findById(id) {
+  function findItemById(id) {
     return db('user_items')
       .select('id', 'username', 'user_id', 'photo', 'item_name', 'description', 'price', 'available')
       .where({ id })

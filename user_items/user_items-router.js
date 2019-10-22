@@ -48,7 +48,7 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
-  user_items.findById(id)
+  user_items.findItemById(id)
   .then(item => {
     if (item) {
       user_items.update(changes, id)
@@ -67,7 +67,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
-  user_items.remove(id)
+  user_items.removeItem(id)
   .then(item => {
     if (item) {
       res.json({ removed: item });
