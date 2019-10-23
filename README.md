@@ -154,7 +154,7 @@ DELETE /users/user-items/:id
 | price       	| decimal 	| item price *required (ex: 20.22)                   	|
 | available   	| boolean 	| if the item is available * required                	|
 
-### GET items
+# GET items
 
 ```
 GET /items
@@ -190,7 +190,7 @@ GET /items
 ]
 
 ```
-### GET items by ID
+# GET items by ID
 
 ```
 GET /items/:id
@@ -208,7 +208,7 @@ GET /items/:id
 }
 ```
 
-### POST item
+# POST item
 
 ```
 POST /items
@@ -223,8 +223,9 @@ POST /items
   }
 }
 ```
+---
 
-### PUT (update) item
+# PUT (update) item
 
 ```
 PUT /items/:id
@@ -233,11 +234,20 @@ PUT /items/:id
 
 ```
 {
-  "updated": id of item
+  "message": "item was successfully updated!",
+  "item": 1
 }
 ```
+### error message if no item_name or description
 
-### delete item 
+```
+{
+  errorMessage: "Please provide a item name and description"
+}
+```
+---
+
+# delete item 
 
 ```
 DELETE /items/:id
@@ -248,5 +258,12 @@ DELETE /items/:id
 {
   "message": "item was successfully updated!",
   "item": 1
+}
+```
+### error message if item was removed or does not exist 
+
+```
+{
+  "message": "The item with the specified ID does not exist"
 }
 ```
