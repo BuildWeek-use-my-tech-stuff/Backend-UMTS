@@ -85,9 +85,13 @@ router.put('/:id', (req, res) => {
     const { id } = req.params;
     
     Items.removeItem(id)
-      .then(deleted => {
+      .then(item => {
         if(id){
-          res.json({ deleted, message: `item ${id} was deleted` });
+          res.json({ item, message: `item ${id} was deleted` });
+        } else if(!item) {
+            res.status(404).json({
+                message: 'The item with the specified ID does not exist'
+            })
         }
       })
       .catch(err => {

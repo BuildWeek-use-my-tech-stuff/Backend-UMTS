@@ -213,11 +213,14 @@ GET /items/:id
 ```
 POST /items
 ```
-## response with item id
+## response
 
 ```
 {
-  "id": 9
+  "message": "item was successfully created!",
+  "item": {
+    "id": 13
+  }
 }
 ```
 
@@ -243,7 +246,7 @@ DELETE /items/:id
 
 ```
 {
-  "deleted": 1,
-  "message": "item (number) was deleted"
+  "message": "item was successfully updated!",
+  "item": 1
 }
 ```
