@@ -43,6 +43,6 @@ function editItem(id, item) {
 
 function removeItem(id) {
   return db('items')
-    .where('id', Number(id))
+    .where('id', id)
     .del();
 }
