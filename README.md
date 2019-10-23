@@ -92,3 +92,109 @@ POST /:id/user_items
   "id": 7 
 }
 ```
+---
+
+# items
+
+| name        	| type    	| description                                        	|
+|-------------	|---------	|----------------------------------------------------	|
+| id          	| integer 	| id of item (automatically added)                   	|
+| photo       	| string  	| item photo (cannot be longer than 1000 characters) 	|
+| item_name   	| string  	| item name *required                                	|
+| description 	| text    	| item description * required                        	|
+| price       	| decimal 	| item price *required (ex: 20.22)                   	|
+| available   	| boolean 	| if the item is available * required                	|
+
+### GET items
+
+```
+GET /items
+```
+## response an array of items
+
+```
+[
+  {
+    "id": 1,
+    "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+    "item_name": "computer",
+    "description": "this is the decription",
+    "available": 1,
+    "price": 237.22
+  },
+  {
+    "id": 2,
+    "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+    "item_name": "computer",
+    "description": "this is the decription",
+    "available": 1,
+    "price": 25.12
+  },
+  {
+    "id": 3,
+    "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+    "item_name": "computer",
+    "description": "this is the decription",
+    "available": 1,
+    "price": 33.25
+  }
+]
+
+```
+### GET items by ID
+
+```
+GET /items/:id
+```
+## response with object (item)
+
+```
+{
+  "id": 2,
+  "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+  "item_name": "computer",
+  "description": "this is the decription",
+  "available": 1,
+  "price": 25.12
+}
+```
+
+### POST item
+
+```
+POST /items
+```
+## response with item id
+
+```
+{
+  "id": 9
+}
+```
+
+### PUT (update) item
+
+```
+PUT /items/:id
+```
+## response 
+
+```
+{
+  "updated": id of item
+}
+```
+
+### delete item 
+
+```
+DELETE /items/:id
+```
+## response 
+
+```
+{
+  "deleted": 1,
+  "message": "item (number) was deleted"
+}
+```
