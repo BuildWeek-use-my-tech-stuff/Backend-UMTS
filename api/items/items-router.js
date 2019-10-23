@@ -86,7 +86,7 @@ router.put('/:id', (req, res) => {
     
     Items.removeItem(id)
       .then(item => {
-        if(id){
+        if(id && item){
           res.json({ item, message: `item ${id} was deleted` });
         } else if(!item) {
             res.status(404).json({
