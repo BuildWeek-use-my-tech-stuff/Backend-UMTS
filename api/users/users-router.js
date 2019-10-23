@@ -98,14 +98,16 @@ router.get('/user-items/:id', restricted, (req, res) => {
 
   router.delete('/user-items/:id', (req, res) => {
     const { id } = req.params;
-  
+    
     users.deleteItems(id)
-    .then(deleted => {
-        res.json({ deleted, message: `item ${id} was deleted` });
-      })    
-    .catch(err => {
-      res.status(500).json({ message: 'Failed to delete item' });
-    });
+      .then(deleted => {
+        if(id){
+          res.json({ deleted, message: `item ${id} was deleted` });
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to delete item' });
+      });  
   });
 
   module.exports = router;
