@@ -80,7 +80,7 @@ function updateItems(item, id){
 
 function deleteItems(id){
   return db('user_items')
-  .where('id', Number(id))
+  .where('id', id)
   .del();
 }
 
