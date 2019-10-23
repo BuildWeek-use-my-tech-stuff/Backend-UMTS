@@ -97,7 +97,7 @@ router.get('/user-items/:id', restricted, (req, res) => {
   });
 
   router.delete('/user-items/:id', (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
   
     users.deleteItems(id)
     .then(deleted => {
