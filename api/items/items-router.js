@@ -42,7 +42,10 @@ router.post('/', restricted, (req, res) => {
     // const id = req.params.id;
     Items.createItem(req.body)
     .then(item => {
-      res.status(201).json(item);
+      res.status(201).json({
+          message: 'item was successfully created!',
+          item
+      });
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new item' });
@@ -56,7 +59,10 @@ router.put('/:id', (req, res) => {
   Items.editItem(id, changes)
   .then(item => {
       if(item){
-          res.status(200).json(item)
+          res.status(200).json({
+            message: 'item was successfully updated!',
+            item
+          })
       } else if(!id) {
           res.status(404).json({
               message: "The item with the specified ID does not exist."
