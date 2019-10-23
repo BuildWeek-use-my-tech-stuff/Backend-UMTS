@@ -78,6 +78,26 @@ GET /:id/user-items
 ```
 ---
 
+### GET user items by ID
+
+```
+GET /users/user-items/:id
+```
+## response 
+
+```
+{
+  "id": 2,
+  "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+  "item_name": "computer",
+  "description": "this is the decription",
+  "price": "235.22",
+  "available": true,
+  "user_id": 2
+}
+```
+---
+
 ### POST create user item
 
 ```
@@ -90,6 +110,35 @@ POST /:id/user_items
 ```
 {
   "id": 7 
+}
+```
+---
+
+### PUT users items
+
+```
+PUT /users/user-items/:id
+```
+
+### response 
+
+```
+1 if updated was successful, 0 if update failed
+```
+---
+
+### DELETE uers items 
+
+```
+DELETE /users/user-items/:id
+```
+
+### response 
+
+```
+{
+  "deleted": 1, 
+  "message": "item (id of item) was deleted"
 }
 ```
 ---
