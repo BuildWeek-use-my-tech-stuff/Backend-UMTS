@@ -61,7 +61,13 @@ router.get('/user-items/:id', restricted, (req, res) => {
   const id = req.params.id;
   users.getItemById(id)
   .then(item => {
-    res.status(200).json(item)
+    if(item){
+      res.status(200).json(item)
+  } else {
+      res.status(404).json({
+          message: "item NOT found"
+      })
+  }
   })
   .catch(error => {
       console.log(error)
@@ -75,7 +81,10 @@ router.get('/user-items/:id', restricted, (req, res) => {
     // const id = req.params.id;
     users.addItem(req.body)
     .then(item => {
-      res.status(201).json(item);
+      res.status(201).json({
+        message: 'item was successfully created!',
+        item
+      });
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to create new item' });
@@ -85,11 +94,22 @@ router.get('/user-items/:id', restricted, (req, res) => {
   router.put('/user-items/:id', restricted, (req, res) => {
     const id = req.params.id;
     const changes = req.body;
-    // users.getItemById(id)
     users.updateItems(changes, id)
     .then(item => {
-      // users.updateItems(changes, id)
-      res.status(200).json(item);
+      if(item){
+        res.status(200).json({
+          message: 'item was successfully updated!',
+          item
+        })
+    } else if(!id) {
+        res.status(404).json({
+            message: "The item with the specified ID does not exist."
+        })
+    } else if(!req.body.item_name || !req.body.description){
+        res.status(400).json({
+            errorMessage: "Please provide a item name and description"
+        })
+    }
     })
     .catch (err => {
       res.status(500).json({ message: 'Failed to update new item' });
@@ -100,9 +120,13 @@ router.get('/user-items/:id', restricted, (req, res) => {
     const { id } = req.params;
     
     users.deleteItems(id)
-      .then(deleted => {
-        if(id){
-          res.json({ deleted, message: `item ${id} was deleted` });
+      .then(item => {
+        if(id && item){
+          res.json({ item, message: `item ${id} was deleted` });
+        } else if(!item) {
+            res.status(404).json({
+                message: 'The item with the specified ID does not exist'
+            })
         }
       })
       .catch(err => {
