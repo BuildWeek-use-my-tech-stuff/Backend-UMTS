@@ -1,14 +1,14 @@
 # Backend-UMTS
 
 ### BaseURL: https://use-my-tech-stuff-bw.herokuapp.com/api
+---
 
-# **Auth**
+# **Authentication**
 
-## **Register User**
+## Register User
 ```
 POST /auth/register
 ```
----
 | name     	| type   	| description                	|   	|   	|
 |----------	|--------	|----------------------------	|---	|---	|
 | username 	| string 	| users name *required       	|   	|   	|
@@ -16,7 +16,7 @@ POST /auth/register
 | email    	| string 	| users email (not required) 	|   	|   	|
 | phone    	| string 	| users phone (not required) 	|   	|   	|
 
-## response 
+### response 
 
 ```
 {
@@ -26,18 +26,19 @@ POST /auth/register
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...etc."
 }
 ```
+---
 
-## **Login User**
+## Login User
 ```
 POST /auth/login
 ```
----
+
 | name     	| type   	| description              	|   	|   	|
 |----------	|--------	|--------------------------	|---	|---	|
 | username 	| string 	| users name *required     	|   	|   	|
 | password 	| string 	| users password *required 	|   	|   	|
 
-## response 
+### response 
 
 ```
 {
@@ -45,24 +46,25 @@ POST /auth/login
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...etc."
 }
 ```
-# user_items
 ---
+# **users items**
+
 | name        	| type    	| description                                             	|
 |-------------	|---------	|---------------------------------------------------------	|
 | id          	| integer 	| user_items id                                       	|
 | photo       	| string  	| photo of item (cannot be longer than 1000 characters) 	|
 | item_name   	| string  	| name of item *required                                	|
 | description 	| text    	| description of item * required                        	|
-| price       	| decimal 	| price of item *required (ex: 20.22)                   	|
+| price       	| number with 2 decimal places 	| price of item *required (ex: 20.00)                   	|
 | available   	| boolean 	| if the item is available * required                     	|
 | user_id     	| integer 	| the id of the user *required                            	|
 
-### GET user items
+## GET user items
 
 ```
 GET /:id/user-items
 ```
-## response 
+### response 
 
 ```
 {
@@ -78,12 +80,12 @@ GET /:id/user-items
 ```
 ---
 
-### GET user items by ID
+## GET user item by ID
 
 ```
 GET /users/user-items/:id
 ```
-## response 
+### response 
 
 ```
 {
@@ -98,23 +100,25 @@ GET /users/user-items/:id
 ```
 ---
 
-### POST create user item
+## POST create user item
 
 ```
 POST /:id/user_items
 ```
 
-## response 
-### responses with id of item
+### response 
 
 ```
 {
-  "id": 7 
+  "message": "item was successfully created!",
+  "item": {
+    "id": 16
+  }
 }
 ```
 ---
 
-### PUT users items
+## PUT user item
 
 ```
 PUT /users/user-items/:id
@@ -123,11 +127,16 @@ PUT /users/user-items/:id
 ### response 
 
 ```
-1 if updated was successful, 0 if update failed
+{
+  "message": "item was successfully updated!",
+  "item": 1
+}
+
+item gives 1 if updated was successful, 0 if update failed
 ```
 ---
 
-### DELETE uers items 
+## DELETE uers item 
 
 ```
 DELETE /users/user-items/:id
@@ -143,7 +152,7 @@ DELETE /users/user-items/:id
 ```
 ---
 
-# items
+# **items**
 
 | name        	| type    	| description                                        	|
 |-------------	|---------	|----------------------------------------------------	|
@@ -151,15 +160,15 @@ DELETE /users/user-items/:id
 | photo       	| string  	| item photo (cannot be longer than 1000 characters) 	|
 | item_name   	| string  	| item name *required                                	|
 | description 	| text    	| item description * required                        	|
-| price       	| decimal 	| item price *required (ex: 20.22)                   	|
+| price       	| number with 2 decimal places	| item price *required (ex: 20.00)                   	|
 | available   	| boolean 	| if the item is available * required                	|
 
-# GET items
+## GET items
 
 ```
 GET /items
 ```
-## response an array of items
+### response
 
 ```
 [
@@ -190,12 +199,12 @@ GET /items
 ]
 
 ```
-# GET items by ID
+## GET items by ID
 
 ```
 GET /items/:id
 ```
-## response with object (item)
+### response
 
 ```
 {
@@ -208,12 +217,12 @@ GET /items/:id
 }
 ```
 
-# POST item
+## POST item
 
 ```
 POST /items
 ```
-## response
+### response
 
 ```
 {
@@ -225,12 +234,12 @@ POST /items
 ```
 ---
 
-# PUT (update) item
+## PUT item
 
 ```
 PUT /items/:id
 ```
-## response 
+### response 
 
 ```
 {
@@ -247,12 +256,12 @@ PUT /items/:id
 ```
 ---
 
-# delete item 
+## delete item 
 
 ```
 DELETE /items/:id
 ```
-## response 
+### response 
 
 ```
 {
