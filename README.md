@@ -62,7 +62,7 @@ POST /auth/login
 ## GET user items
 
 ```
-GET /:id/user-items
+GET /users/:id/user-items
 ```
 ### response 
 
@@ -123,7 +123,7 @@ GET /users/user-items/:id
 ## POST user item
 
 ```
-POST /:id/user-items
+POST users/:id/user-items
 ```
 
 ### response 
