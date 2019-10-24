@@ -23,7 +23,7 @@ POST /auth/register
   "message": "Welcome bobby2113!",
   "email": "test@email.com",
   "phone": "801-555-5555",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvYmJ5MjExMyIsInN1YmplY3QiOjEzLCJpYXQiOjE1NzE2NzI0NzUsImV4cCI6MTU3MTY3NjA3NX0.B-TStUjz6MtAbJ2_-VbSgc2emd4rlm-6apNuN15z7k8"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...etc."
 }
 ```
 
@@ -42,7 +42,7 @@ POST /auth/login
 ```
 {
   "message": "Welcome bobby2113!",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvYmJ5MjExMyIsInN1YmplY3QiOjEzLCJpYXQiOjE1NzE2NzI1MzgsImV4cCI6MTU3MTY3NjEzOH0.v_6r-766RUP89r8wFxBlZTn4P7U7eeCxMnsuD_CRnwQ"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...etc."
 }
 ```
 # user_items
