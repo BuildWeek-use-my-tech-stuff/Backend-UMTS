@@ -67,15 +67,35 @@ GET /:id/user-items
 ### response 
 
 ```
-{
-    "id": 5,
+[
+  {
+    "id": 8,
     "photo": "https://unsplash.com/photos/BZzHWmQUszE",
-    "item_name": "computer",
+    "item_name": "jacket",
     "description": "this is the decription",
-    "price": "20.22",
+    "price": "22.00",
     "available": true,
-    "user_id": 1
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+    "item_name": "iphone",
+    "description": "brand new iphone",
+    "price": "822.00",
+    "available": true,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "photo": "https://unsplash.com/photos/BZzHWmQUszE",
+    "item_name": "keyboard",
+    "description": "I have an extra keyboard",
+    "price": "15.00",
+    "available": true,
+    "user_id": 2
   }
+]
 
 ```
 ---
@@ -100,10 +120,10 @@ GET /users/user-items/:id
 ```
 ---
 
-## POST create user item
+## POST user item
 
 ```
-POST /:id/user_items
+POST /:id/user-items
 ```
 
 ### response 
@@ -136,7 +156,7 @@ item gives 1 if updated was successful, 0 if update failed
 ```
 ---
 
-## DELETE uers item 
+## DELETE user item 
 
 ```
 DELETE /users/user-items/:id
